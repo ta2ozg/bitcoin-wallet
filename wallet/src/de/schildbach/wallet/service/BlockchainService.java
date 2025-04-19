@@ -229,7 +229,7 @@ public class BlockchainService extends LifecycleService {
             notificationAddresses.add(address);
 
         final MonetaryFormat btcFormat = config.getFormat();
-        final String packageFlavor = application.applicationPackageFlavor();
+        final String packageFlavor = application != null ? application.applicationPackageFlavor() : null; // NullPointerException protection comes in because you need to make sure it is not null.
         final String msgSuffix = packageFlavor != null ? " [" + packageFlavor + "]" : "";
 
         // summary notification
